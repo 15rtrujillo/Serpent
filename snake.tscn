@@ -1,121 +1,26 @@
-[gd_scene load_steps=19 format=3 uid="uid://btub1muqyhgb"]
+[gd_scene load_steps=5 format=3 uid="uid://4ico7pxkrwgn"]
 
 [ext_resource type="Script" path="res://snake.gd" id="1_erxw5"]
-[ext_resource type="Texture2D" uid="uid://dkfym1pxiug6h" path="res://art/snake_head_spritesheet.png" id="1_nhpdg"]
+[ext_resource type="PackedScene" uid="uid://btub1muqyhgb" path="res://head.tscn" id="1_g11pj"]
+[ext_resource type="PackedScene" uid="uid://dpj7ma17x7kxc" path="res://tail.tscn" id="2_16qaf"]
 [ext_resource type="Texture2D" uid="uid://b3y8o72qtrgum" path="res://art/snake_eyes.png" id="2_anaj8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_34iql"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(0, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qi2ut"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(50, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7n7p"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(100, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nn183"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(150, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qhln"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(200, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_10wk5"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(250, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_thoro"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(300, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hr5bf"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(350, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjkmg"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(400, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5xg5"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(450, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cqnqs"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(500, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_57fla"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(550, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0nya8"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(600, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lsi8w"]
-atlas = ExtResource("1_nhpdg")
-region = Rect2(650, 0, 50, 50)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8ml5g"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_34iql")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qi2ut")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7n7p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nn183")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6qhln")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_10wk5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_thoro")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hr5bf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjkmg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n5xg5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cqnqs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_57fla")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0nya8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lsi8w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 28.0
-}]
-
-[node name="Snake" type="CharacterBody2D"]
+[node name="Snake" type="Node2D"]
 script = ExtResource("1_erxw5")
+metadata/_edit_group_ = true
 
-[node name="Eyes" type="Sprite2D" parent="."]
+[node name="TongueTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Tail" parent="." instance=ExtResource("2_16qaf")]
+position = Vector2(0, 50)
+
+[node name="Head" parent="." instance=ExtResource("1_g11pj")]
+
+[node name="Eyes" type="Sprite2D" parent="Head"]
 texture = ExtResource("2_anaj8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.47451, 0, 1)
-sprite_frames = SubResource("SpriteFrames_8ml5g")
+[node name="MovementTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="TongueTimer" to="." method="_on_tongue_timer_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
