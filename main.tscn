@@ -10,8 +10,8 @@ position = Vector2(400, 475)
 scale = Vector2(50, 50)
 texture = ExtResource("1_dcq2n")
 
-[node name="Snake" parent="." instance=ExtResource("2_8pagq")]
-position = Vector2(225, 500)
-
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(275, 525)
+
+[node name="Snake" parent="." instance=ExtResource("2_8pagq")]
+position = Vector2(225, 575)

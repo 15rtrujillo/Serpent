@@ -3,12 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://cjq4a2evxy6l8" path="res://art/snake_body.png" id="1_c7i1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j66ia"]
-size = Vector2(34, 50)
+size = Vector2(50, 50)
 
 [node name="Body" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.47451, 0, 1)
 texture = ExtResource("1_c7i1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

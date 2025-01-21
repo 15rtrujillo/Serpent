@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4ico7pxkrwgn"]
+[gd_scene load_steps=6 format=3 uid="uid://4ico7pxkrwgn"]
 
 [ext_resource type="Script" path="res://snake.gd" id="1_erxw5"]
 [ext_resource type="PackedScene" uid="uid://btub1muqyhgb" path="res://head.tscn" id="1_g11pj"]
 [ext_resource type="PackedScene" uid="uid://dpj7ma17x7kxc" path="res://tail.tscn" id="2_16qaf"]
 [ext_resource type="Texture2D" uid="uid://b3y8o72qtrgum" path="res://art/snake_eyes.png" id="2_anaj8"]
+[ext_resource type="PackedScene" uid="uid://dtrmyvkbygyd4" path="res://body.tscn" id="4_0fkak"]
 
 [node name="Snake" type="Node2D"]
 script = ExtResource("1_erxw5")
@@ -12,13 +13,16 @@ metadata/_edit_group_ = true
 [node name="TongueTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Tail" parent="." instance=ExtResource("2_16qaf")]
-position = Vector2(0, 50)
-
 [node name="Head" parent="." instance=ExtResource("1_g11pj")]
+position = Vector2(0, -50)
 
 [node name="Eyes" type="Sprite2D" parent="Head"]
 texture = ExtResource("2_anaj8")
+
+[node name="Body" parent="." instance=ExtResource("4_0fkak")]
+
+[node name="Tail" parent="." instance=ExtResource("2_16qaf")]
+position = Vector2(0, 50)
 
 [node name="MovementTimer" type="Timer" parent="."]
 

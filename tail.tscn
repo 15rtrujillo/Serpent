@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b5t5dy0cknh5u" path="res://art/snake_tail.png" id="1_vhkl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgwvh"]
-size = Vector2(34, 50)
+size = Vector2(50, 50)
 
 [node name="Tail" type="Area2D"]
 
