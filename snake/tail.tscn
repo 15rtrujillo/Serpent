@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpj7ma17x7kxc"]
+[gd_scene load_steps=4 format=3 uid="uid://dpj7ma17x7kxc"]
 
+[ext_resource type="Script" path="res://snake/body_part.gd" id="1_2nn16"]
 [ext_resource type="Texture2D" uid="uid://b5t5dy0cknh5u" path="res://art/snake_tail.png" id="1_vhkl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgwvh"]
 size = Vector2(50, 50)
 
 [node name="Tail" type="Area2D"]
+script = ExtResource("1_2nn16")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vhkl0")

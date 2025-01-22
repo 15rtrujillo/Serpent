@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b77drxsfatdni"]
 
 [ext_resource type="Texture2D" uid="uid://qb738qf6lwmp" path="res://art/bg.png" id="1_dcq2n"]
-[ext_resource type="PackedScene" uid="uid://4ico7pxkrwgn" path="res://snake.tscn" id="2_8pagq"]
+[ext_resource type="PackedScene" uid="uid://4ico7pxkrwgn" path="res://snake/snake.tscn" id="2_8pagq"]
 
 [node name="Main" type="Node"]
 
