@@ -3,6 +3,8 @@ class_name Head extends BodyPart
 @onready var _animatedSprite2D: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _tongueTimer: Timer = $TongueTimer
 
+var changing_direction: bool = false
+
 func _ready():
 	_tongueTimer.timeout.connect(_on_tongue_timer_timeout)
 
