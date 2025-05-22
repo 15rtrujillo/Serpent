@@ -44,7 +44,7 @@ func _is_aligned_y() -> bool:
 	return int(global_position.y) % 25 == 0 and not int(global_position.y) % 50 == 0
 	
 func can_turn(to_turn: Vector2) -> bool:
-	if to_turn == Vector2.ZERO or to_turn == direction or to_turn == -direction:
+	if to_turn == direction or to_turn == -direction:
 		return false
 	elif to_turn == Vector2.UP or to_turn == Vector2.DOWN:
 		return _is_aligned_x()

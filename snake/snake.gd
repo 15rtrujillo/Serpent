@@ -31,7 +31,6 @@ func _process(delta: float):
 		
 		if part is Head:
 			if part.can_turn(to_turn):
-				print("Can turn")
 				part.change_direction(to_turn)
 				direction_changes[part.global_position] = to_turn
 		else:
